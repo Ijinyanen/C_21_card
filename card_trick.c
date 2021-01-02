@@ -37,12 +37,15 @@ int main(){
 
     const char* selected_card = select_card(main_deck, DECK_SIZE);
     printf("You chose %s\n", selected_card);
-    return 0;
 
     split_deck(main_deck,sub_deck_one,sub_deck_two,sub_deck_three);
+    
+    for(int i = 0; i < SUB_DECK_SIZE; i++){
+        printf(sub_deck_one[i]);       
+    }
+
     int containing_deck_num = 0;
     containing_deck_num = show_decks(sub_deck_one, sub_deck_two,sub_deck_three);
-
 
     return 0;
 }
@@ -76,7 +79,7 @@ char sub2[SUB_DECK_SIZE][CHAR_LENGTH], char sub3[SUB_DECK_SIZE][CHAR_LENGTH]){
 int show_decks(char sub1[SUB_DECK_SIZE][CHAR_LENGTH], char sub2[SUB_DECK_SIZE][CHAR_LENGTH], char sub3[SUB_DECK_SIZE][CHAR_LENGTH]){
     printf(" deck 1 contains: ");
     for(int i; i < SUB_DECK_SIZE; i++){
-        printf(sub1[i]);
+        printf(sub_deck_one[i]);
     }
     printf("\n");
         printf(" deck 2 contains: ");
