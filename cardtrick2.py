@@ -1,3 +1,4 @@
+#A version that works by passing arrays into function and depending on mutability. More pythonic?
 
 # the 21 cards we will use
 CARDS = ["AD","2D","3D","4D","5D","6D","7D","8D", "9D","10D","JD","QD","KD","AH","2H","3H","4H","5H","6H","7H","8H"]

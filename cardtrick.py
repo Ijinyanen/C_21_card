@@ -1,5 +1,7 @@
+# Aversion that makes greater use of global variables. More classical C in nature?
 
-# the 21 cards qwe will use
+
+# the 21 cards we will use
 CARDS = ["AD","2D","3D","4D","5D","6D","7D","8D", "9D","10D","JD","QD","KD","AH","2H","3H","4H","5H","6H","7H","8H"]
 #list of global variables
 selection = ""
@@ -23,7 +25,7 @@ def main():
     #main loop of the trick
     counter = 0
     while(counter < 3):
-        split_deck(main_deck)
+        split_deck()
         location = show_decks(sub_deck_one,sub_deck_two,sub_deck_three)
         if location == "1":
             combine_decks(sub_deck_two,sub_deck_one,sub_deck_three)
@@ -49,7 +51,7 @@ def select_card():
     return select
 
 #splits the main deck into three sub decks
-def split_deck(deck):
+def split_deck():
     global sub_deck_one
     global sub_deck_two
     global sub_deck_three
