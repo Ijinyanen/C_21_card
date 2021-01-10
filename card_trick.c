@@ -18,6 +18,7 @@ char sub2[SUB_DECK_SIZE][CHAR_LENGTH], char sub3[SUB_DECK_SIZE][CHAR_LENGTH]);
 
 void combine_decks(char deck[DECK_SIZE][CHAR_LENGTH], char sub1[SUB_DECK_SIZE][CHAR_LENGTH], char sub2[SUB_DECK_SIZE][CHAR_LENGTH],char sub3[SUB_DECK_SIZE][CHAR_LENGTH]);
 int show_decks(char sub1[SUB_DECK_SIZE][CHAR_LENGTH], char sub2[SUB_DECK_SIZE][CHAR_LENGTH], char sub3[SUB_DECK_SIZE][CHAR_LENGTH]);
+int card_check(char deck[DECK_SIZE][CHAR_LENGTH], char chosen_num[CHAR_LENGTH]);
 
 int main(){
 
@@ -63,14 +64,20 @@ int main(){
 
 //has the user select a card and returns it.
 const char* select_card(char deck[DECK_SIZE][CHAR_LENGTH], int length){
-    for(int i = 0; i < length; i++){
-        printf("%s ", deck[i]);
-    }
-    printf("\n Pick a card from the options above. \n");
+    int card_ok = 0;
     static char chosen_card [CHAR_LENGTH];
-    scanf("%s", chosen_card);
-    return chosen_card;
+    
+    while(card_ok < 1){
 
+        for(int i = 0; i < length; i++){
+            printf("%s ", deck[i]);
+        }
+        printf("\n Pick a card from the options above. \n");
+        scanf("%s", chosen_card);
+        card_ok = card_check(deck, chosen_card);
+
+    }
+    return chosen_card;
 }
 
 //splits the main deck into three sub decks.
@@ -116,7 +123,7 @@ int show_decks(char sub1[SUB_DECK_SIZE][CHAR_LENGTH], char sub2[SUB_DECK_SIZE][C
     }
     return answer;
 }
-
+// function to combine the three sub decks into one.
 void combine_decks(char deck[DECK_SIZE][CHAR_LENGTH], char sub1[SUB_DECK_SIZE][CHAR_LENGTH],
  char sub2[SUB_DECK_SIZE][CHAR_LENGTH],char sub3[SUB_DECK_SIZE][CHAR_LENGTH]){
      for(int i= 0; i < SUB_DECK_SIZE; i++){
@@ -133,5 +140,16 @@ void combine_decks(char deck[DECK_SIZE][CHAR_LENGTH], char sub1[SUB_DECK_SIZE][C
          printf("%s ",deck[l]);
      }
      printf("\n");
+ }
+
+// checks if card selection is valid
+ int card_check(char deck[DECK_SIZE][CHAR_LENGTH], char chosen_num[CHAR_LENGTH]){
+    for(int i = 0; i < DECK_SIZE; i++){
+        if(deck[i][0] == chosen_num[0] && deck[i][1] == chosen_num[1]){
+            return 1;
+        }
+
+    }
+    return 0;
 
  }
